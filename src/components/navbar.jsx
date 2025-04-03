@@ -24,7 +24,7 @@ export const Navbar = () => {
             {/* Right Section - Options */}
             <div className="flex items-center gap-4">
                 <ul to="/work-with-us" className="border border-white rounded-full px-4 py-2 font-semibold">
-                    List your event
+                    List your event 
                 </ul>
 
                 {/* Search Button (Not a Link) */}
