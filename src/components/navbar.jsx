@@ -10,16 +10,21 @@ import { PopularEvents } from "../pages/popularEvents";
 export const Navbar = () => {
     return (
         <div>
-            <nav className="bg-[#081331] text-white px-8 py-4 flex items-center justify-between shadow-lg">
+            <nav className="fixed top-0 left-0 w-full z-50 bg-[#081331] text-white px-8 py-4 flex items-center justify-between shadow-lg">
+
                 {/* Left Section - Navigation Links */}
                 <div className="flex items-center gap-4">
                     <div className="flex gap-3">
                         <Link to="/profile" className="p-2 border border-white rounded-full">
                             <FiUser size={24} />
                         </Link>
+                        <Link to="/" className="border border-white rounded-full px-4 py-2 font-semibold">
+                            Home
+                        </Link>
                         <Link to="/popular-events" className="border border-white rounded-full px-4 py-2 font-semibold">
                             Popular Events
                         </Link>
+                        
                         <Link to="/college-events" className="border border-white rounded-full px-4 py-2 font-semibold">
                             College Events
                         </Link>
@@ -46,7 +51,6 @@ export const Navbar = () => {
                 </div>
             </nav>
 
-            {/* ✅ Keep Routing in Navbar */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
