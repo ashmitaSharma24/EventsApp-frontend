@@ -14,6 +14,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.1",
+    "react-textfit": "^1.1.1",
     "scrollbar": "^0.1.12",
     "tailwind-scrollbar-hide": "^2.0.0"
   },
