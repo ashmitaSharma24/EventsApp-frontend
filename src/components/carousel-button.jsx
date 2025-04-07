@@ -1,27 +1,15 @@
 import { useState } from "react";
+import { GridElement } from "./gridElement"; // adjust path as needed
 
-export const CarouselButton = () => {
-  const gridel = [
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgLdraY5ffC6jq2ceVNuxzRNoUGTdz7rtWFg&s',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgLdraY5ffC6jq2ceVNuxzRNoUGTdz7rtWFg&s',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/code-hackathon-event-poster-design-template-d7c8ddfd12e11fd2b9c6b70241626091_screen.jpg?ts=1567076214',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgLdraY5ffC6jq2ceVNuxzRNoUGTdz7rtWFg&s',
-  ];
-
-  const visibleCount = 7; // Number of images visible at once
+export const CarouselButton = ({ slides, title }) => {
+  const visibleCount = 5;
   const [startIndex, setStartIndex] = useState(0);
-  const total = gridel.length;
+  const total = slides.length;
 
   const getVisibleItems = () => {
     return Array.from({ length: visibleCount }, (_, i) => {
       const index = (startIndex + i) % total;
-      return gridel[index];
+      return slides[index];
     });
   };
 
@@ -34,7 +22,8 @@ export const CarouselButton = () => {
   };
 
   return (
-    <div className="relative w-full px-6 py-4">
+    <div className="relative w-full px-6 py-4 mb-10">
+      <h1 className="text-black font-semibold text-3xl mt-3 mb-6">{title}</h1>
       {/* Buttons */}
       <button
         onClick={prev}
@@ -49,14 +38,14 @@ export const CarouselButton = () => {
         ▶
       </button>
 
-      {/* Image Grid */}
-      <div className="flex gap-6 justify-center overflow-hidden">
-        {getVisibleItems().map((src, index) => (
-          <img
+      {/* GridElement Carousel */}
+      <div className="flex gap-6 justify-center overflow-visible">
+        {getVisibleItems().map((item, index) => (
+          <GridElement
             key={index}
-            src={src}
-            alt=""
-            className="rounded-xl shadow-lg h-[160px] aspect-square object-cover"
+            bgColor={item.bgColor}
+            text={item.text}
+            link={item.link}
           />
         ))}
       </div>
