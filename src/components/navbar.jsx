@@ -6,6 +6,7 @@ import { Profile } from "../pages/profile";
 import { AddEvents } from "../pages/addEventPage";
 import { CollegeEvents } from "../pages/collegeEvents";
 import { PopularEvents } from "../pages/popularEvents";
+import AuthPage from "../pages/authPage";
 
 export const Navbar = () => {
     return (
@@ -18,7 +19,7 @@ export const Navbar = () => {
                         <Link to="/profile" className="p-2 border border-white rounded-full">
                             <FiUser size={24} />
                         </Link>
-                        <Link to="/" className="border border-white rounded-full px-4 py-2 font-semibold">
+                        <Link to="/home" className="border border-white rounded-full px-4 py-2 font-semibold">
                             Home
                         </Link>
                         <Link to="/popular-events" className="border border-white rounded-full px-4 py-2 font-semibold">
@@ -51,13 +52,7 @@ export const Navbar = () => {
                 </div>
             </nav>
 
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/add-event" element={<AddEvents />} />
-                <Route path="/college-events" element={<CollegeEvents />} />
-                <Route path="/popular-events" element={<PopularEvents />} />
-            </Routes>
+           
         </div>
     );
 };
