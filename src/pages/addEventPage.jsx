@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Background } from '../components/background';
 
 export const AddEvents = () => {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ export const AddEvents = () => {
   var backgroundImage ="https://rare-gallery.com/thumbs/366887-4k-wallpaper.jpg"; // Example image URL
 
   return (
+    <Background>
     <div 
         className="flex justify-center items-center min-h-screen bg-gray-100 pb-10 pt-20 mt-10"
         style={{
@@ -189,6 +191,7 @@ export const AddEvents = () => {
         </button>
       </form>
     </div>
+    </Background>
   );
 };
 
