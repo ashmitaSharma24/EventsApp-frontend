@@ -27,7 +27,7 @@ export const CarouselButton = ({ slides, title }) => {
       {/* Buttons */}
       <button
         onClick={prev}
-        className="absolute top-1/2 left-0 transform -translate-y-1/2 bg-black/50 text-white px-3 py-2 rounded z-10"
+        className="absolute  bg-black/50 text-white px-3 py-2 rounded z-10"
       >
         ◀
       </button>
