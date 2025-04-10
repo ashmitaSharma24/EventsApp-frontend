@@ -34,7 +34,7 @@ export const AddEvents = () => {
   return (
     <Background>
     <div 
-        className="flex justify-center items-center min-h-screen bg-gray-100 pb-10 pt-20 mt-10"
+        className="flex justify-center items-center min-h-screen bg-gray-100 pb-10 pt-20"
         style={{
             backgroundImage: `url(${backgroundImage})`, // Adjust if you're hosting it locally or via public folder
             backgroundSize: 'cover',
