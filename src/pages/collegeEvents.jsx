@@ -5,6 +5,7 @@ export const CollegeEvents = () => {
   useEffect(() => {
     // Call fetchEvents when component mounts
     fetchEvents("", ""); // change the values as needed
+    
   }, []);
 
   return (

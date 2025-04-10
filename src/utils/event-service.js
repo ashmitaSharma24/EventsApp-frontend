@@ -2,8 +2,10 @@ import { events_api } from './APIs';
 export async function fetchEvents(category, genre) {
     try {
       const response = await fetch(events_api, {
+        method:'GET',
         headers: {
           'Content-Type': 'application/json',
+          //'ngrok-skip-browser-warning': 'true'
         },
       });
   
