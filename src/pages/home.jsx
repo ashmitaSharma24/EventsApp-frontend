@@ -8,7 +8,7 @@ import { categories, genres } from "../utils/slides";
 export const Home = () => {
     return (
         <Background>
-            <div className="scrollbar-hide mt-20">
+            <div className="scrollbar-hide">
                 <HeroSection/>
                 <Carousel/>
                 <CarouselButton slides={categories} title={"Browse Events By Category"}/>

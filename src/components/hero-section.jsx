@@ -2,10 +2,12 @@ import { useState } from "react";
 
 export const HeroSection = () => {
   const slides = [
-    'https://static.vecteezy.com/system/resources/thumbnails/000/271/024/small_2x/9.jpg',
-    'https://cdn.pixabay.com/photo/2015/10/29/14/38/web-1012467_1280.jpg',
-    'https://i.ytimg.com/vi/4wSJsAIuwSY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAt9WSB_D429NyEpEgU7MK8JKuOiw',
-      ];
+    'https://d8it4huxumps7.cloudfront.net/uploads/images/festival/banner/67f03107dc48d_whatsapp_image_2025-04-04_at_21.38.23.jpeg?d=1280x371',
+    'https://assets.devfolio.co/hackathons/26f627d605a94ad4a41bfc386c0cebe6/assets/cover/578.png',
+    'https://assets.devfolio.co/hackathons/224768a615a64e36b93a822b879befd6/assets/cover/603.png',
+    'https://uploads.tickettailor.com/c_scale,w_1920/v1/production/userfiles/x0wziiown12pbwivoo6e.jpg?_a=BAAAV6DQ',
+    'https://i.ytimg.com/vi/kATDBCuwKyI/maxresdefault.jpg',
+    ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
 
