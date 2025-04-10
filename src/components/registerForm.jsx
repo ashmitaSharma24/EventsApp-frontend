@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export const RegisterForm = () => {
   const [name, setName] = useState("");
@@ -7,14 +8,34 @@ export const RegisterForm = () => {
   const [collegeName, setCollegeName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const backendUrl = "https://7d54-2405-201-4024-6d-309f-97c-8e56-7aba.ngrok-free.app/api/auth/register";
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/");
-    
-    // TODO: Replace with real registration logic
-    console.log("Registering:", { name, email, password });
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post(`${backendUrl}`, {
+        name,
+        email,
+        college_name: collegeName,
+        password,
+        confirm_password: confirmPassword
+      });
+
+      console.log("Registration successful:", response.data);
+      alert("Registration successful!");
+      navigate("/"); // Redirect to home or login page
+    } catch (error) {
+      console.error("Registration failed:", error.response?.data || error.message);
+      alert("Registration failed. Please try again.");
+    }
   };
 
   return (
