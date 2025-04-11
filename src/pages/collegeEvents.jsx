@@ -1,8 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { fetchEvents } from '../utils/event-service.js';
+import { EventCard } from '../components/eventCard.jsx';
+import { Background } from '../components/background.jsx';
 
 export const CollegeEvents = () => {
   const [events, setEvents] = useState([]);
+
+  /*
+  {
+  "_id":"67f4c8888967502c953633d4",
+  "title":"Hackathon Mania",
+  "description":"Join us for a hands-on experience and showcase your skills.",
+  "category":"webinar",
+  "date":"2025-05-12T00:00:00.000Z",
+  "time":"11:00",
+  "venue":"IGDTUW Auditorium",
+  "genre":"Cultural",
+  "college":"igdtuw",
+  "image":"https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
+  "registeration_link":"https://example.com/event/1",
+  "registration_deadline":"2025-04-10T00:00:00.000Z",
+  "createdAt":"2025-04-08T06:56:07.736Z","__v":0
+  }
+  */ 
 
   useEffect(() => {
     const loadEvents = async () => {
@@ -14,17 +34,16 @@ export const CollegeEvents = () => {
   }, []);
 
   return (
-    <div className="mt-20 px-6">
-      <h1 className="text-2xl font-bold mb-4">College Events</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {events.map(event => (
-          <div key={event._id} className="p-4 shadow-lg rounded-lg bg-white text-black">
-            <h2 className="font-semibold">{event.title}</h2>
-            <p>{event.description}</p>
-            <p className="text-sm text-gray-500">{event.date}</p>
-          </div>
-        ))}
+    <Background>
+      <div className="mt-5 px-6 mb-20">
+      <h1 className="text-2xl font-bold mb-8">College Events</h1>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {events.map(event => (
+  <EventCard key={event._id} event={event} />
+))}
       </div>
     </div>
+    </Background>
+    
   );
 };
