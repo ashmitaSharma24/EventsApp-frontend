@@ -27,7 +27,7 @@ export const CollegeEvents = () => {
   useEffect(() => {
     const loadEvents = async () => {
       const data = await fetchEvents("", ""); // You can pass filters here
-      if (data) setEvents(data.slice(0,12));
+      if (data) setEvents(data);
     };
 
     loadEvents();

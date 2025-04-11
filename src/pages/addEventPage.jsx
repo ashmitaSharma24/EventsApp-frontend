@@ -8,12 +8,12 @@ export const AddEvents = () => {
     category: '',
     date: '',
     time: '',
-    venue:'',
-    genre:'',
+    venue: '',
+    genre: '',
     college: '',
-    register_deadline:'',
+    register_deadline: '',
     imageUrl: '',
-    register_link:'',
+    register_link: '',
   });
 
   const handleChange = (e) => {
@@ -23,175 +23,121 @@ export const AddEvents = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Event data submitted:', formData);
-    // Here you can POST this data to a backend using axios or fetch
+
+    try {
+      const response = await fetch('/events', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title: formData.name,
+          description: formData.description,
+          category: formData.category,
+          date: formData.date,
+          time: formData.time,
+          venue: formData.venue,
+          genre: formData.genre,
+          college: formData.college,
+          image: formData.imageUrl,
+          registeration_link: formData.register_link,
+          registration_deadline: formData.register_deadline,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('✅ Event submitted successfully!');
+        setFormData({
+          name: '',
+          description: '',
+          category: '',
+          date: '',
+          time: '',
+          venue: '',
+          genre: '',
+          college: '',
+          register_deadline: '',
+          imageUrl: '',
+          register_link: '',
+        });
+      } else {
+        alert('❌ Failed to submit event: ' + data.error);
+      }
+    } catch (error) {
+      alert('❌ Error submitting event: ' + error.message);
+    }
   };
 
-  var backgroundImage ="https://rare-gallery.com/thumbs/366887-4k-wallpaper.jpg"; // Example image URL
+  const backgroundImage = 'https://rare-gallery.com/thumbs/366887-4k-wallpaper.jpg';
 
   return (
     <Background>
-    <div 
+      <div
         className="flex justify-center items-center min-h-screen bg-gray-100 pb-10 pt-20"
         style={{
-            backgroundImage: `url(${backgroundImage})`, // Adjust if you're hosting it locally or via public folder
-            backgroundSize: 'cover',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center',
         }}
-    >
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-4xl"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">Add New Event</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-semibold">Event Name</label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Category</label>
-            <input
-              type="text"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Date</label>
-            <input
-              type="date"
-              name="date"
-              value={formData.date}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Time</label>
-            <input
-              type="time"
-              name="time"
-              value={formData.time}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-          
-          <div >
-            <label className="block mb-1 font-semibold">Genre</label>
-            <input
-              type="text"
-              name="genre"
-              value={formData.genre}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Venue</label>
-            <input
-              type="text"
-              name="venue"
-              value={formData.venue}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-
-          <div >
-            <label className="block mb-1 font-semibold">College</label>
-            <input
-              type="text"
-              name="college"
-              value={formData.college}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Registeration Deadline</label>
-            <input
-              type="date"
-              name="register_deadline"
-              value={formData.register_deadline}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Image URL</label>
-            <input
-              type="url"
-              name="imageUrl"
-              value={formData.imageUrl}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded-lg"
-              placeholder="https://example.com/image.jpg"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Registration Link</label>
-            <input
-              type="url"
-              name="register_link"
-              value={formData.register_link}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-2 rounded-lg"
-              placeholder="https://example.com/image.jpg"
-            />
-          </div>
-
-          <div className="md:col-span-2">
-            <label className="block mb-1 font-semibold">Description</label>
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-              rows={2}
-              required
-              className="w-full border border-gray-300 p-2 rounded-lg"
-            ></textarea>
-          </div>
-        </div>
-
-        <button
-          type="submit"
-          className="mt-6 w-full bg-blue-900 text-white font-semibold py-2 rounded-xl hover:bg-blue-700 transition duration-300"
+        <form
+          onSubmit={handleSubmit}
+          className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-4xl"
         >
-          Submit Event
-        </button>
-      </form>
-    </div>
+          <h2 className="text-2xl font-bold mb-6 text-center">Add New Event</h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <InputField label="Event Name" name="name" value={formData.name} onChange={handleChange} />
+            <InputField label="Category" name="category" value={formData.category} onChange={handleChange} />
+            <InputField type="date" label="Date" name="date" value={formData.date} onChange={handleChange} />
+            <InputField type="time" label="Time" name="time" value={formData.time} onChange={handleChange} />
+            <InputField label="Genre" name="genre" value={formData.genre} onChange={handleChange} />
+            <InputField label="Venue" name="venue" value={formData.venue} onChange={handleChange} />
+            <InputField label="College" name="college" value={formData.college} onChange={handleChange} />
+            <InputField type="date" label="Registration Deadline" name="register_deadline" value={formData.register_deadline} onChange={handleChange} />
+            <InputField type="url" label="Image URL" name="imageUrl" value={formData.imageUrl} onChange={handleChange} />
+            <InputField type="url" label="Registration Link" name="register_link" value={formData.register_link} onChange={handleChange} />
+
+            <div className="md:col-span-2">
+              <label className="block mb-1 font-semibold">Description</label>
+              <textarea
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                rows={2}
+                required
+                className="w-full border border-gray-300 p-2 rounded-lg"
+              ></textarea>
+            </div>
+          </div>
+
+          <button
+            type="submit"
+            className="mt-6 w-full bg-blue-900 text-white font-semibold py-2 rounded-xl hover:bg-blue-700 transition duration-300"
+          >
+            Submit Event
+          </button>
+        </form>
+      </div>
     </Background>
   );
 };
 
+const InputField = ({ type = 'text', label, name, value, onChange }) => (
+  <div>
+    <label className="block mb-1 font-semibold">{label}</label>
+    <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={onChange}
+      required
+      className="w-full border border-gray-300 p-2 rounded-lg"
+    />
+  </div>
+);
