@@ -1,16 +1,16 @@
 import { useState } from "react";
-import { GridElement } from "./gridElement";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { EventCard } from "./eventCard";
 
-export const CarouselButton = ({ slides, title }) => {
-  const visibleCount = 3;
+export const EventCarousel = ({ events, category }) => {
+  const visibleCount = 4;
   const [startIndex, setStartIndex] = useState(0);
-  const total = slides.length;
+  const total = events.length;
 
   const getVisibleItems = () => {
     return Array.from({ length: visibleCount }, (_, i) => {
       const index = (startIndex + i) % total;
-      return slides[index];
+      return events[index];
     });
   };
 
@@ -24,10 +24,9 @@ export const CarouselButton = ({ slides, title }) => {
 
   return (
     <div className="relative w-full px-6 py-4 mb-10">
-      <h1 className="text-black font-semibold text-3xl mt-3 mb-6">{title}</h1>
+      <h1 className="text-black font-semibold text-3xl mt-3 mb-6">{category}</h1>
 
-      {/* Carousel with arrows */}
-      <div className="relative flex items-center justify-between w-full">
+      <div className="relative flex items-center w-full">
         {/* Left Arrow */}
         <FaAngleLeft
           size={48}
@@ -36,14 +35,11 @@ export const CarouselButton = ({ slides, title }) => {
         />
 
         {/* Carousel Items */}
-        <div className="flex gap-4 justify-center overflow-visible w-full">
-          {getVisibleItems().map((item, index) => (
-            <GridElement
-              key={index}
-              bgColor={item.bgColor}
-              text={item.text}
-              link={item.link}
-            />
+        <div className="flex gap-4 justify-center overflow-hidden w-full px-4">
+          {getVisibleItems().map((event, index) => (
+            <div key={index} className="w-64 flex-shrink-0">
+              <EventCard event={event} />
+            </div>
           ))}
         </div>
 

@@ -3,7 +3,7 @@ import { fetchEvents } from '../utils/event-service.js';
 import { EventCard } from '../components/eventCard.jsx';
 import { Background } from '../components/background.jsx';
 
-export const CollegeEvents = () => {
+export const AllEvents = () => {
   const [events, setEvents] = useState([]);
 
   /*
@@ -27,7 +27,7 @@ export const CollegeEvents = () => {
   useEffect(() => {
     const loadEvents = async () => {
       const data = await fetchEvents("", ""); // You can pass filters here
-      if (data) setEvents(data.slice(0,12));
+      if (data) setEvents(data);
     };
 
     loadEvents();
@@ -36,7 +36,7 @@ export const CollegeEvents = () => {
   return (
     <Background>
       <div className="mt-5 px-6 mb-20">
-      <h1 className="text-2xl font-bold mb-8">College Events</h1>
+      <h1 className="text-2xl font-bold mb-8">All Events</h1>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
       {events.map(event => (
   <EventCard key={event._id} event={event} />

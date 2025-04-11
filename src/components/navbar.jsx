@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { FiUser, FiSearch, FiChevronDown } from "react-icons/fi";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import { Drawer } from "./drawer"; // adjust path if needed
+import icon from '../assets/image-removebg-preview.png'
+
+
 
 export const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -13,6 +16,9 @@ export const Navbar = () => {
         {/* Left Section - Navigation Links */}
         <div className="flex items-center gap-4">
           <div className="flex gap-3">
+            {/*<button>
+              <img src={icon} />
+            </button>*/}
             <button
               onClick={() => setIsDrawerOpen(prev => !prev)}
               className="p-2 border border-white rounded-full"
@@ -22,6 +28,9 @@ export const Navbar = () => {
 
             <Link to="/home" className="border border-white rounded-full px-4 py-2 font-semibold">
               Home
+            </Link>
+            <Link to="/all-events" className="border border-white rounded-full px-4 py-2 font-semibold">
+              All Events
             </Link>
             <Link to="/popular-events" className="border border-white rounded-full px-4 py-2 font-semibold">
               Popular Events

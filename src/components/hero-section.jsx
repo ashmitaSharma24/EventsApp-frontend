@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaAngleLeft,FaAngleRight } from "react-icons/fa";
 
 export const HeroSection = () => {
   const slides = [
@@ -37,18 +38,23 @@ const nextSlide=()=>{
       />
 
       {/* Navigation Buttons (optional) */}
-      <button
+    { /* <button
         onClick={prevSlide}
         className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded"
       >
         
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white px-2 py-1 rounded"
-      >
-        
-      </button>
+      </button>*/}
+       <FaAngleLeft
+  size={52}
+  onClick={prevSlide}
+  className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full cursor-pointer hover:scale-125 transition"
+/>
+
+<FaAngleRight
+  size={52}
+  onClick={nextSlide}
+  className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black/50 text-white p-2 rounded-full cursor-pointer hover:scale-125 transition"
+/>
     </div>
   );
 };
