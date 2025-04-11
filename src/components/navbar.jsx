@@ -35,7 +35,7 @@ export const Navbar = () => {
         {/* Right Section - Options */}
         <div className="flex items-center gap-4">
           <Link to="/add-event" className="border border-white rounded-full px-4 py-2 font-semibold">
-            List your event
+            List an event
           </Link>
 
           <button className="p-2 border border-white rounded-full">
