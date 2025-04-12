@@ -78,12 +78,6 @@ export const AddEvents = () => {
     <Background>
       <div
         className="flex justify-center items-center min-h-screen bg-gray-100 pb-10 pt-20"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center',
-        }}
       >
         <form
           onSubmit={handleSubmit}

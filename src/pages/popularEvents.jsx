@@ -17,9 +17,9 @@ export const PopularEvents=()=>{
       
     return(
        <Background>
-        <div className="mt-5 px-6 mb-20">
+        <div className="mt-5 px-4 md:px-12 lg:px-20 mb-20">
               <h1 className="text-2xl font-bold mb-8">Popular Events</h1>
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               {popularEvents.map(pe => (
           <EventCard key={pe._id} event={pe} />
         ))}
